@@ -78,13 +78,13 @@ namespace scch
                                     //   MoveToVec((evec / config.fSmooth) * p);
                                     //  Vec2 ne = ;
 
-                                    MoveToVec(Engine.NormalizeAngle((Engine.LocalPlayer.angles) + (evec - Engine.LocalPlayer.angles) / (config.fSmooth - p)));
+                                    MoveToVec(Engine.NormalizeAngle((Engine.LocalPlayer.angles - Engine.LocalPlayer.ViewPunchAngle * 2.0f) + (evec - Engine.LocalPlayer.angles) / (config.fSmooth - p)));
                                     
 
                                     Thread.Sleep(10);
                                 }
 
-                                MoveToVec(Engine.NormalizeAngle(Engine.LocalPlayer.angles - Engine.LocalPlayer.ViewPunchAngle * 1.9f));
+                             //   MoveToVec(Engine.NormalizeAngle(Engine.LocalPlayer.angles - Engine.LocalPlayer.ViewPunchAngle * 1.9f));
 
                                 //     f.drawShadowString(i + " "+evec.x+"  "+evec.y, f.debugFont, Brushes.AliceBlue, new PointF(400, 40));
                                 if (Engine.enemy[i].health == 0 || Engine.enemy[i].bDormant)

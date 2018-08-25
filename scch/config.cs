@@ -9,7 +9,7 @@ namespace scch
 {
     public static class config
     {
-        public static int VERSION = 2;
+        public static int VERSION = 3;
 
         public static int Version;
       //  public static int OffsetVersion;

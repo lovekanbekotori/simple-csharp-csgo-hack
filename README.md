@@ -5,5 +5,5 @@ esp , aimbot ,triggerbot ,skeleton,distance ,multi-language, save config file,ne
 ## use
 press ins open menu,press ↑ Move up,press ↓ Move up,press → add or open,press ← sub or close
 # Change Log
-##0.02(3) 2018.8.26
+## 0.02(3) 2018.8.26
 add glow esp

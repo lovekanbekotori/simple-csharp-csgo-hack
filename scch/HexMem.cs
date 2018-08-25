@@ -216,6 +216,10 @@ namespace scch
             return WriteByteArray(address, BitConverter.GetBytes(w), sizeof(float));
         }
 
+        public bool WriteBool(long address, bool w)
+        {
+            return WriteByteArray(address, BitConverter.GetBytes(w), sizeof(bool));
+        }
 
         public double ReadDouble(long address)
         {

@@ -140,6 +140,7 @@ namespace scch
             public bool isEnemy;
             public float distance;
             public bool isVisible;
+            public int iGlowIndex;
 
             public void read(int i)
             {
@@ -170,6 +171,8 @@ namespace scch
                     isVisible = bsp_is_visible(Engine.LocalPlayer.position, positionHeight);
                 else
                     isVisible = false;
+
+                iGlowIndex = mem.ReadInt32(BASE + Offsets.m_iGlowIndex) * 0x38 + 0x4;
 
             }
         }

@@ -36,6 +36,8 @@ namespace scch
         public static long dwClientState_State = 0x0;
         public static long dwClientState_MapDirectory = 0x0;
         public static long dwGameDir = 0x0;
+        public static long dwGlowObjectManager = 0x0;
+        public static long m_iGlowIndex = 0x0;
 
         public static string path;
 
@@ -72,6 +74,8 @@ namespace scch
             path = Engine.mem.ReadStringAscii(Engine.ENGINE+ dwGameDir, 120)+"\\";
 
             dwClientState_State += Offsets.dwClientState;
+
+            dwGlowObjectManager = Engine.mem.ReadInt32((int)client.BaseAddress + dwGlowObjectManager);
         }
     }
 }

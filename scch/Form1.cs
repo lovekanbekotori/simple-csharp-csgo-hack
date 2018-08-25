@@ -52,6 +52,7 @@ namespace scch
         public string SSaveConfig;
         public string SVersion;
         public string SNewVersion;
+        public string SGLOW;
         public string[] SAimName = new string[4];
 
         
@@ -211,6 +212,9 @@ namespace scch
                                 DrawBoneLine(i);
                         }
 
+                        if (config.bGlow)
+                            DrawGlow(i);
+
 
                         //   if (bsp_is_visible(Engine.LocalPlayer.position, Engine.enemy[i].positionHeight))
                         //     {
@@ -231,6 +235,15 @@ namespace scch
    
         }
 
+        public void DrawGlow(int i)
+        {
+            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex, config.color_espR / 255.0f); //r
+            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x4, config.color_espG / 255.0f);//g
+            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x8, config.color_espB / 255.0f);//b
+            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0xc, 170 / 255.0f);//a
+                Engine.mem.WriteBool(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x20, true);
+                Engine.mem.WriteBool(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x21, false);
+        }
 
         public void ShowVersion()
         {
@@ -245,7 +258,7 @@ namespace scch
 
 
         public static int menu_selected = 0;
-        public const int MENU_MAX_ITEMS = 19; //菜单数
+        public const int MENU_MAX_ITEMS = 20; //菜单数
         public const int MENU_TEXT_GAP = 23; //菜单背景间隔
         public static Point MENU_START_POS = new Point(8, 8);
 
@@ -255,7 +268,7 @@ namespace scch
 
         public void drawMenu()
         {
-            g.FillRectangle(new SolidBrush(Color.FromArgb(255, 32, 48, 24)), MENU_START_POS.X - 2, MENU_START_POS.Y - 2, 200, 460); //最后两个参数是菜单背景大小
+            g.FillRectangle(new SolidBrush(Color.FromArgb(255, 32, 48, 24)), MENU_START_POS.X - 2, MENU_START_POS.Y - 2, 200, 480); //最后两个参数是菜单背景大小
 
             addMenutItem(SDrawBox + config.bDrawBox, 0);
             addMenutItem(SDrawLine + config.bDrawLine, 1);
@@ -277,6 +290,7 @@ namespace scch
             addMenutItem(SAimParts + SAimName[Engine.iAimBone], 17);
             addMenutItem(SAimAndFire + config.bAimTrigger, 18);
             addMenutItem(SSaveConfig, 19);
+            addMenutItem(SGLOW + config.bGlow, 20);
 
         }
 
@@ -310,6 +324,7 @@ namespace scch
                 SSaveConfig          = "保存配置";
                 SVersion             = "当前版本 :";
                 SNewVersion          = "发现新版本 :";
+                SGLOW                = "人物发光       ";
             }
             else //default 默认
             {
@@ -339,6 +354,7 @@ namespace scch
                 SSaveConfig          = "Save Configuer";
                 SVersion             = "Current Version :";
                 SNewVersion          = "There is now a new version :";
+                SGLOW                = "GLOW            ";
             }
         }
 
@@ -408,7 +424,8 @@ namespace scch
                      Aimbot.MoveAngles(Engine.enemy[i].head, out evec);
               //   Aimbot.MoveToVec(evec);
                      drawShadowString(evec.x.ToString() + "  " + evec.y.ToString() , debugFont, Brushes.AliceBlue, new PointF(300, 60 + i * 15));
-             //       DrawBone(i);
+                    //       DrawBone(i);
+                    DrawGlow(i);
                  }
              }
         }
@@ -640,6 +657,9 @@ namespace scch
                         case 19:
                             config.SaveConfiguer();
                             break;
+                        case 20:
+                            config.bGlow = true;
+                            break;
                     }
                     boxPen.Color = Color.FromArgb(255, config.color_espR, config.color_espG, config.color_espB);
                     Thread.Sleep(120);
@@ -716,6 +736,9 @@ namespace scch
                             config.bAimTrigger = false;
                             break;
                         case 19:
+                            break;
+                        case 20:
+                            config.bGlow = false;
                             break;
                     }
                     boxPen.Color = Color.FromArgb(255, config.color_espR, config.color_espG, config.color_espB);

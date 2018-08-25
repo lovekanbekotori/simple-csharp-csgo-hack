@@ -25,6 +25,7 @@ namespace scch
         public static bool bAimbotKey = true;
         public static bool bDrowBone = false;
         public static bool bAimTrigger = true;
+        public static bool bGlow = false;
         public static int fSmooth = 5;
 
 
@@ -141,6 +142,8 @@ namespace scch
             writer.WriteValue(downdelany.ToString());
             writer.WritePropertyName("iAimBone");
             writer.WriteValue(Engine.iAimBone.ToString());
+            writer.WritePropertyName("bGlow");
+            writer.WriteValue(bGlow.ToString());
 
             writer.WriteEndObject();
             writer.Flush();
@@ -204,6 +207,7 @@ namespace scch
             delany = Convert.ToInt32(jo["delany"].ToString());
             downdelany = Convert.ToInt32(jo["downdelany"].ToString());
             Engine.iAimBone= Convert.ToInt32(jo["iAimBone"].ToString());
+            bGlow = Convert.ToBoolean(jo["bGlow"].ToString());
         }
 
         // 读取偏移
@@ -220,27 +224,33 @@ namespace scch
 
             JObject jo = (JObject)JsonConvert.DeserializeObject(JsonText);
 
-        //    OffsetVersion = Convert.ToInt32(jo["OffsetVersion"].ToString());
-            Version = Convert.ToInt32(jo["Version"].ToString());
-            Offsets.dwClientState = Convert.ToInt32(jo["signatures"]["dwClientState"].ToString());
-            Offsets.dwClientState_ViewAngles = Convert.ToInt32(jo["signatures"]["dwClientState_ViewAngles"].ToString());
-            Offsets.dwRadarBase = Convert.ToInt32(jo["signatures"]["dwRadarBase"].ToString());
-            Offsets.dwSensitivityPtr = Convert.ToInt32(jo["signatures"]["dwSensitivityPtr"].ToString());
-            Offsets.dw_EntityList = Convert.ToInt32(jo["signatures"]["dwEntityList"].ToString());
-            Offsets.dw_LocalPlayer = Convert.ToInt32(jo["signatures"]["dwLocalPlayer"].ToString());
-            Offsets.dw_ViewMatrix = Convert.ToInt32(jo["signatures"]["dwViewMatrix"].ToString());
-            Offsets.dwClientState_MapDirectory = Convert.ToInt32(jo["signatures"]["dwClientState_MapDirectory"].ToString());
-            Offsets.dwClientState_Map = Convert.ToInt32(jo["signatures"]["dwClientState_Map"].ToString());
-            Offsets.dwClientState_State = Convert.ToInt32(jo["signatures"]["dwClientState_State"].ToString());
-            Offsets.dwGameDir = Convert.ToInt32(jo["signatures"]["dwGameDir"].ToString());
+            //OffsetVersion = Convert.ToInt32(jo["OffsetVersion"].ToString());
+             Version = Convert.ToInt32(jo["Version"].ToString());
+             Offsets.dwClientState = Convert.ToInt32(jo["signatures"]["dwClientState"].ToString());
+             Offsets.dwClientState_ViewAngles = Convert.ToInt32(jo["signatures"]["dwClientState_ViewAngles"].ToString());
+             Offsets.dwRadarBase = Convert.ToInt32(jo["signatures"]["dwRadarBase"].ToString());
+             Offsets.dwSensitivityPtr = Convert.ToInt32(jo["signatures"]["dwSensitivityPtr"].ToString());
+             Offsets.dw_EntityList = Convert.ToInt32(jo["signatures"]["dwEntityList"].ToString());
+             Offsets.dw_LocalPlayer = Convert.ToInt32(jo["signatures"]["dwLocalPlayer"].ToString());
+             Offsets.dw_ViewMatrix = Convert.ToInt32(jo["signatures"]["dwViewMatrix"].ToString());
+             Offsets.dwClientState_MapDirectory = Convert.ToInt32(jo["signatures"]["dwClientState_MapDirectory"].ToString());
+             Offsets.dwClientState_Map = Convert.ToInt32(jo["signatures"]["dwClientState_Map"].ToString());
+             Offsets.dwClientState_State = Convert.ToInt32(jo["signatures"]["dwClientState_State"].ToString());
+             Offsets.dwGameDir = Convert.ToInt32(jo["signatures"]["dwGameDir"].ToString());
+            Offsets.dwGlowObjectManager = Convert.ToInt32(jo["signatures"]["dwGlowObjectManager"].ToString());
             Offsets.m_dwBoneMatrix = Convert.ToInt32(jo["netvars"]["m_dwBoneMatrix"].ToString());
-            Offsets.m_iCrosshairId = Convert.ToInt32(jo["netvars"]["m_iCrosshairId"].ToString());
-            Offsets.m_iFOVStart = Convert.ToInt32(jo["netvars"]["m_iFOVStart"].ToString());
-            Offsets.m_vecViewOffset = Convert.ToInt32(jo["netvars"]["m_vecViewOffset"].ToString());
-            Offsets.m_viewPunchAngle= Convert.ToInt32(jo["netvars"]["m_viewPunchAngle"].ToString());
-            Offsets.oHealth = Convert.ToInt32(jo["netvars"]["m_iHealth"].ToString());
-            Offsets.oTeam = Convert.ToInt32(jo["netvars"]["m_iTeamNum"].ToString());
-            Offsets.oVecOrigin = Convert.ToInt32(jo["netvars"]["m_vecOrigin"].ToString());
+             Offsets.m_iCrosshairId = Convert.ToInt32(jo["netvars"]["m_iCrosshairId"].ToString());
+             Offsets.m_iFOVStart = Convert.ToInt32(jo["netvars"]["m_iFOVStart"].ToString());
+             Offsets.m_vecViewOffset = Convert.ToInt32(jo["netvars"]["m_vecViewOffset"].ToString());
+             Offsets.m_viewPunchAngle= Convert.ToInt32(jo["netvars"]["m_viewPunchAngle"].ToString());
+             Offsets.oHealth = Convert.ToInt32(jo["netvars"]["m_iHealth"].ToString());
+             Offsets.oTeam = Convert.ToInt32(jo["netvars"]["m_iTeamNum"].ToString());
+             Offsets.oVecOrigin = Convert.ToInt32(jo["netvars"]["m_vecOrigin"].ToString());
+            Offsets.m_iGlowIndex = Convert.ToInt32(jo["netvars"]["m_iGlowIndex"].ToString());
+
+
+
+
 
         }
 

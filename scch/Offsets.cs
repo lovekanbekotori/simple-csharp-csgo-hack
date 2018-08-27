@@ -24,7 +24,7 @@ namespace scch
         public static long m_iFOVStart = 0x0;
         public static long dwClientState_ViewAngles = 0x0;
         public static long m_iCrosshairId = 0x0;
-        public static long m_dwRadarBasePointer=0x0;
+      
         public static long oHealth = 0x0;
         public static long oVecOrigin = 0x0;
         public static long oTeam = 0x0;
@@ -40,6 +40,8 @@ namespace scch
         public static long m_iGlowIndex = 0x0;
 
         public static string path;
+
+        public static long m_dwRadarBasePointer = 0x6c;
 
         public static void GetPatterns()
         {

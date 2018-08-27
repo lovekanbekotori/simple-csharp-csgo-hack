@@ -165,7 +165,7 @@ namespace scch
                 head.y = mem.ReadFloat(BoneStart + 0x30 * iAimBoneId[iAimBone] + 0x1c);//ReadProcessMemory(hProcess, (LPVOID)(bbone + (0x30 * 10/*yourbone*/) + 0x1C), &bone.y, sizeof(float), NULL);
                 head.z = mem.ReadFloat(BoneStart + 0x30 * iAimBoneId[iAimBone] + 0x2c); //;//ReadProcessMemory(hProcess, (LPVOID)(bbone + (0x30 * 10/*yourbone*/) + 0x2C), &bone.z, sizeof(float), NULL);
 
-                //name=mem.ReadStringUTF8(Offsets.dwRadarBasePointer + (0x168 * (id + 1) + 0x18),64);
+                name=mem.ReadStringUTF8(Offsets.dwRadarBasePointer + (0x168 * (id + 2) + 0x18),64);
 
                 if (isEnemy && health > 0 && !bDormant)
                     isVisible = bsp_is_visible(Engine.LocalPlayer.position, positionHeight);

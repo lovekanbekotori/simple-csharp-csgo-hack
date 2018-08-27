@@ -7,3 +7,5 @@ press ins open menu,press ↑ Move up,press ↓ Move up,press → add or open,pr
 # Change Log
 ## 0.02(3) 2018.8.26
 add glow esp
+## 0.03(4) 2018.8.28
+fix player name

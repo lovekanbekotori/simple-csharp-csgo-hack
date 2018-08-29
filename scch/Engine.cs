@@ -43,7 +43,8 @@ namespace scch
             public static int BoneStart;
             public static int state;
             public static bool bDormant;
-            public static bool isload=false;
+            public static bool isload = false;
+            public static bool isGlow = false;
             public static Vec3 position;
             public static Vec2 angles;
             public static Vec2 punchAngle;
@@ -86,6 +87,12 @@ namespace scch
                            Application.Exit();
                         oldmapname = mapname;
                         isload = true;
+
+                        if(!isGlow)
+                        {
+                            Offsets.GlowObjectManager = Engine.mem.ReadInt32(Engine.CLIENT +Offsets.dwGlowObjectManager);
+                            isGlow = true;
+                        }
                     }
                 }
                 else if (isload && state != 6)

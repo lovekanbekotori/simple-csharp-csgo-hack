@@ -237,13 +237,12 @@ namespace scch
 
         public void DrawGlow(int i)
         {
-            return;
-            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex, config.color_espR / 255.0f); //r
-            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x4, config.color_espG / 255.0f);//g
-            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x8, config.color_espB / 255.0f);//b
-            Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0xc, 170 / 255.0f);//a
-                Engine.mem.WriteBool(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x20, true);
-                Engine.mem.WriteBool(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x21, false);
+            Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex, config.color_espR / 255.0f); //r
+            Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0x4, config.color_espG / 255.0f);//g
+            Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0x8, config.color_espB / 255.0f);//b
+            Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0xc, 170 / 255.0f);//a
+            Engine.mem.WriteBool(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0x20, true);
+            Engine.mem.WriteBool(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0x21, false);
         }
 
         public void ShowVersion()

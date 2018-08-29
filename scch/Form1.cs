@@ -237,6 +237,7 @@ namespace scch
 
         public void DrawGlow(int i)
         {
+            return;
             Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex, config.color_espR / 255.0f); //r
             Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x4, config.color_espG / 255.0f);//g
             Engine.mem.WriteFloat(Offsets.dwGlowObjectManager + Engine.enemy[i].iGlowIndex + 0x8, config.color_espB / 255.0f);//b

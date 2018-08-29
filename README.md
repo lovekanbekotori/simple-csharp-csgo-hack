@@ -9,3 +9,5 @@ press ins open menu,press ↑ Move up,press ↓ Move up,press → add or open,pr
 add glow esp
 ## 0.03(4) 2018.8.28
 fix player name
+## 0.04(4) 2018.8.30
+fix glow esp bug

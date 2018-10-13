@@ -11,3 +11,5 @@ add glow esp
 fix player name
 ## 0.04(4) 2018.8.30
 fix glow esp bug
+## 0.05(4) 2018.10.13
+change offset source

@@ -92,6 +92,7 @@ namespace scch
                 {
                     isload = false;
                 }
+                Offsets.GlowObjectManager = Engine.mem.ReadInt32(Engine.CLIENT + Offsets.dwGlowObjectManager);
             }
 
 

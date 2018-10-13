@@ -28,7 +28,9 @@ namespace scch
         Thread ab = new Thread(Aimbot.AAimbot);
         //everything is declared globally because i made this in a hurry. (and it is a very small project)
         //realistically this could be MUCH cleaner by sperating all of these and the global variables in Engine.cs into other classes
-        
+
+
+        public static int FPS;
 
         public string SDrawBox;
         public string SDrawLine;
@@ -55,7 +57,7 @@ namespace scch
         public string SGLOW;
         public string[] SAimName = new string[4];
 
-        
+
         //i have the esp adjust itself according to this y offset. If playing in borderless windowed 0 is fine.
         //However, if the use is in regular windowed mode, there is a title bar at the top which isnt calculated any where.
         //and again, because i am lazy i dont feel like spending a long time detecting wether the game is in windowed or borderless.
@@ -130,9 +132,11 @@ namespace scch
             int initialStyle = GetWindowLong(this.Handle, -20);
             SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);
 
-            Engine.mem = new HexMem("csgo", HexMem.ProcessAccessFlags.VMRead| HexMem.ProcessAccessFlags.VMWrite| HexMem.ProcessAccessFlags.VMOperation);//HexMem.ProcessAccessFlags.VMRead | HexMem.ProcessAccessFlags.VMWrite
+            Engine.mem = new HexMem("csgo", HexMem.ProcessAccessFlags.VMRead | HexMem.ProcessAccessFlags.VMWrite | HexMem.ProcessAccessFlags.VMOperation);//HexMem.ProcessAccessFlags.VMRead | HexMem.ProcessAccessFlags.VMWrite
             Engine.CLIENT = Engine.mem.GetModuleAddress("client_panorama.dll");
             Engine.ENGINE = Engine.mem.GetModuleAddress("engine.dll");
+
+            
 
             if (Engine.CLIENT <= 0)
             {
@@ -232,16 +236,18 @@ namespace scch
                 drawMenu();
             if (!config.bshowMenu)
                 ShowVersion();
-   
+            ++FPS;
+
         }
+
+        public void ShowFps(object state)
+        {
+            drawShadowString("FPS:" + FPS, debugFont, Brushes.Green, new PointF(Engine.rect.right-20,Engine.rect.top));
+        }
+        
 
         public void DrawGlow(int i)
         {
-            if (Offsets.GlowObjectManager == 0)
-            {
-                Offsets.GlowObjectManager = Engine.mem.ReadInt32(Engine.CLIENT + Offsets.dwGlowObjectManager);
-                return;
-            }
             Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex, config.color_espR / 255.0f); //r
             Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0x4, config.color_espG / 255.0f);//g
             Engine.mem.WriteFloat(Offsets.GlowObjectManager + Engine.enemy[i].iGlowIndex + 0x8, config.color_espB / 255.0f);//b
@@ -252,7 +258,8 @@ namespace scch
 
         public void ShowVersion()
         {
-            drawShadowString(config.Version <= config.VERSION ? SVersion + config.VERSION : SVersion + config.VERSION + SNewVersion + config.Version, debugFont, Brushes.Red, new PointF(1, 1));
+            // drawShadowString(config.Version <= config.VERSION ? SVersion + config.VERSION : SVersion + config.VERSION + SNewVersion + config.Version, debugFont, Brushes.Red, new PointF(1, 1));
+            drawShadowString(config.VERSION + SNewVersion + config.Version, debugFont, Brushes.Red, new PointF(1, 1));
         }
 
         //public void ShowVis(int i)

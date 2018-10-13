@@ -83,7 +83,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="csgo_panorama.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bsp.dll" />
-    <Content Include="HexMurder_Icon %281%29.ico" />
     <Content Include="scch.ico" />
     <None Include="Newtonsoft.Json.dll" />
   </ItemGroup>

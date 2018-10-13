@@ -47,7 +47,7 @@ namespace scch
         public static string OffsetFileName = "csgo_panorama.json";
         public static string JsonDllName = "Newtonsoft.Json.dll";
         public static string BspDllName = "bsp.dll";
-        public static string OffsetUrl = "https://raw.githubusercontent.com/nrife/csoffset/master/csgo_panorama.json";
+        public static string OffsetUrl = "https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.json";
         public static void InitConfig()
         {
             //检查文件
@@ -225,7 +225,7 @@ namespace scch
             JObject jo = (JObject)JsonConvert.DeserializeObject(JsonText);
 
             //OffsetVersion = Convert.ToInt32(jo["OffsetVersion"].ToString());
-             Version = Convert.ToInt32(jo["Version"].ToString());
+           //  Version = Convert.ToInt32(jo["Version"].ToString());
              Offsets.dwClientState = Convert.ToInt32(jo["signatures"]["dwClientState"].ToString());
              Offsets.dwClientState_ViewAngles = Convert.ToInt32(jo["signatures"]["dwClientState_ViewAngles"].ToString());
              Offsets.dwRadarBase = Convert.ToInt32(jo["signatures"]["dwRadarBase"].ToString());
